@@ -75,6 +75,6 @@ export class FoodCatalogueComponent {
       foodItemsList: this.foodItemCart,
       restaurant: this.foodItemResponse.restaurant
     }
-    this.router.navigate(['/orderSummary'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
+    this.router.navigate(['/order-summary'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
   }
 }
