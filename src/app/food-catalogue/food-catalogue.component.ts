@@ -14,7 +14,7 @@ export class FoodCatalogueComponent {
 
   restaurantId: number;
   foodItemResponse: FoodCataloguePage;
-  foodItemCart: FoodItem[] = [];
+  foodItemCart: FoodItem [] = [];
   orderSummary: FoodCataloguePage;
 
   //ActivatedRoute to get details from route which calls this component
@@ -32,13 +32,23 @@ export class FoodCatalogueComponent {
     this.getFoodItemsByRestaurant(this.restaurantId);
     
   }
-
+  updateQuantityToZeroAsDefault() {
+    if (this.foodItemResponse && this.foodItemResponse.foodItemsList) {
+      this.foodItemResponse.foodItemsList.forEach(food => {
+        food.quantity = 0;
+      });
+    }
+  }
+  
   getFoodItemsByRestaurant(restaurant: number) {
     this.foodItemService.getFoodItemsByRestaurant(restaurant).subscribe(
       data => {
+        console.log('Received data:', data); // Log the received data
         this.foodItemResponse = data;
+        this.updateQuantityToZeroAsDefault();
       }
     )
+    
   }
 
   increment(food: any) {
