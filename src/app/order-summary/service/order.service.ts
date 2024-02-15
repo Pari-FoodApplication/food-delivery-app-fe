@@ -9,7 +9,7 @@ import { API_URL_Order } from '../../constants/url';
 
 export class OrderService {
 
-  private apiUrl = API_URL_Order +'/order/saveOrder';
+  private apiUrl = API_URL_Order +'/order';
 
   constructor(private http: HttpClient) { }
 
